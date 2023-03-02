@@ -12,6 +12,13 @@
     </head>
     <body class="antialiased">
         <div class="container mt-5">
+            <form action="refresh" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary mb-4">
+                    Refresh Rates
+                </button>
+            </form>
+            
             <table class="table table-sm table-striped table-hover">
                 <caption>Hello Innovation Software!</caption>
                 <thead class="table-light">

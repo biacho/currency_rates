@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CurrencyRatesController;
+use App\Models\CurrencyRates;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,4 @@ use App\Http\Controllers\CurrencyRatesController;
 */
 
 Route::get('/', [CurrencyRatesController::class, 'show']);
+Route::post('/refresh', [CurrencyRatesController::class, 'refresh']);
