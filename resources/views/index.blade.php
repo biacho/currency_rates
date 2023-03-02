@@ -13,7 +13,8 @@
     <body class="antialiased">
         <div class="container mt-5">
             <table class="table table-sm table-striped table-hover">
-                <thead>
+                <caption>Hello Innovation Software!</caption>
+                <thead class="table-light">
                     <tr>
                         <th>Name</th>
                         <th>Code</th>
@@ -22,12 +23,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($data as $row)
                     <tr>
-                        <td>Poland</td>
-                        <td>PLN</td>
-                        <td>1</td>
-                        <td>Just Now</td>
+                        <td>{{ $row['name'] }}</td>
+                        <td>{{ $row['currency_code'] }}</td>
+                        <td>{{ $row['exchange_rate'] }}</td>
+                        <td>{{ $row['updated_at'] }}</td>
                     </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     Currency Rates
