@@ -9,7 +9,8 @@ class CurrencyRatesController extends Controller
 {
     public function show()
     {
-        
-        return view('index');
+        $rates = CurrencyRates::all();
+
+        return view('index', ['data' => $rates]);
     }
 }
