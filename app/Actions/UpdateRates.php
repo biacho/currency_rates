@@ -11,8 +11,6 @@ class UpdateRates
     $response = file_get_contents('http://api.nbp.pl/api/exchangerates/tables/a/');
     $response = json_decode($response);
 
-    // $response = Http::get('http://api.nbp.pl/api/exchangerates/tables/a/today');
-
     foreach($response[0]->rates as $item)
     {            
         $currencies = CurrencyRates::updateOrCreate(
