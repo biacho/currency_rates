@@ -25,6 +25,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Code</th>
+                        <th>Symbol</th>
                         <th>Rate (PLN)</th>
                         <th>Updated</th>
                     </tr>
@@ -32,10 +33,11 @@
                 <tbody>
                     @foreach($data as $row)
                     <tr>
-                        <td>{{ $row['name'] }}</td>
-                        <td>{{ $row['currency_code'] }}</td>
-                        <td>{{ $row['exchange_rate'] }}</td>
-                        <td>{{ $row['updated_at'] }}</td>
+                        <td>{{ $row->name }}</td>
+                        <td>{{ $row->currency_code }}</td>
+                        <td>{{ $row->symbol }}
+                        <td>{{ $row->exchange_rate }}</td>
+                        <td>{{ $row->updated_at }}</td>
                     </tr>
                     @endforeach
                 </tbody>

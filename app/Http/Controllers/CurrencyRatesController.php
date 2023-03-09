@@ -19,6 +19,7 @@ class CurrencyRatesController extends Controller
     public function show()
     {
         $data = $this->rates->handle();
+        // dd($data);
         return view('index', ['data' => $data]);
     }
 
