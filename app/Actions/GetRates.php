@@ -13,9 +13,7 @@ class GetRates
             ->join('currencies', 'rates.currency_code', '=', 'currencies.code')
             ->select('rates.*', 'currencies.symbol')
             ->get();
-    //dd($data);
 
-    // return CurrencyRates::all();
     return $data;
   }
 }
