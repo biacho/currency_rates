@@ -2,38 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\CurrencyRates;
+use App\Actions\GetRates;
+use App\Actions\UpdateRates;
 
 class CurrencyRatesController extends Controller
 {
+    private GetRates $rates;
+    private UpdateRates $updateRates;
+
+    public function __construct(GetRates $rates, UpdateRates $updateRates)
+    {
+        $this->rates = $rates;
+        $this->updateRates = $updateRates;
+    }
+
     public function show()
     {
-        $rates = CurrencyRates::all();
-
-        $this->refresh();
-
-        return view('index', ['data' => $rates]);
+        $data = $this->rates->handle();
+        return view('index', ['data' => $data]);
     }
 
     public function refresh()
     {
-        $response = file_get_contents('http://api.nbp.pl/api/exchangerates/tables/a/');
-        $responseJSON = json_decode($response);
-
-        foreach($responseJSON[0]->rates as $item)
-        {
-            CurrencyRates::updateOrCreate(
-                [
-                    'name' => $item->currency
-                ],
-                [
-                    'currency_code' => $item->code,
-                    'exchange_rate' => $item->mid
-                ]
-            );
-        }
-
-        return redirect('/')->with(['data' => CurrencyRates::all()]);
+        $data = $this->updateRates->handle();
+        return redirect('/')->with(['data' => $data]);
     }
 }
