@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('currency_code');
             $table->decimal('exchange_rate', 5, 2);
+            $table->decimal('dif', 5, 4);
+            $table->integer('change');
             $table->timestamps();
         });
     }

@@ -11,5 +11,5 @@ class CurrencyRates extends Model
     use HasFactory, HasUuids;
 
     protected $table = 'rates';
-    protected $fillable = ['name', 'currency_code', 'exchange_rate'];
+    protected $fillable = ['name', 'currency_code', 'exchange_rate', 'dif', 'change'];
 }
